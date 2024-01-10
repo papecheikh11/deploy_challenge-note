@@ -1,0 +1,95 @@
+.App{
+    margin-top: 20px;
+    /* background: linear-gradient(to right, rgb(136, 136, 235), rgb(46, 43, 224)); */
+    padding: 10px;
+    min-height: 700px;
+}
+.my-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 80px;
+}
+
+.color{
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border: none;
+}
+
+.mon-input{
+display: flex;
+align-items: center;
+background-color: white;
+height: 80px;
+}
+
+.mon-input input{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.mon-affichage{
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+
+
+ .contenant{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    align-items: center;
+
+}
+
+.contenue{
+    width: 300px;
+    height: 80px;
+    margin: 20px;
+    border-left: 7px solid rgb(106, 189, 238);
+    border-radius: 10px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.c-1{
+    background: linear-gradient(to right, rgb(136, 136, 235), rgb(46, 43, 224));
+}
+.c-2{
+    background: linear-gradient(to bottom, rgb(183, 183, 238), rgb(238, 156, 197));
+}
+.c-3{
+    background: linear-gradient(to right, rgb(136, 136, 235), rgb(46, 43, 224));
+}
+.c-4{
+    background: linear-gradient(to right, rgb(248, 108, 127), rgb(233, 23, 23));
+}
+.c-5{
+    background: linear-gradient(to right, rgb(230, 140, 23), rgb(238, 183, 82));
+}
+.c-6{
+    background: linear-gradient(to right, rgb(168, 243, 158), rgb(214, 241, 58));
+}
+
+.fa-pen{
+    color: rgb(106, 189, 238);;
+}
+.fa-trash{
+    color: red;
+}
+
+.border-btn{
+    border: none;
+    background-color: white;
+}
