@@ -9,13 +9,11 @@ function App() {
   const [tache, setTache] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState('linear-gradient(to right, rgb(136, 136, 235), rgb(46, 43, 224))')
-
-
+  const [backgroundColor, setBackgroundColor] = useState("");
+  let iteration = tache.length
   const handleColorButtonClick = (newColor) => {
     setBackgroundColor(newColor);
   };
-
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -26,31 +24,35 @@ function App() {
     if (inputValue.trim() === "") {
       alert("veuillez entrez une tache");
     } else {
-      const id = Math.floor(Math.random() * 100002120);
-        let newTache = inputValue;
-        let updateTache = [...tache];
-        updateTache.push({
-          tache: newTache,
-          id: id,
-          timestamp: new Date().toLocaleString(),
-        });
+      let newTache;
       if (!isEditing) {
-        
-        setTache(updateTache);
-        setIsEditing(false);
-        setInputValue("");
+        newTache = {
+          id: Math.floor(Math.random() * 100002120),
+          value: inputValue,
+          timestamp: new Date().toLocaleString(),
+        };
+        newTache = [...tache, newTache];
       } else {
-        setEditIndex([...updateTache, inputValue]);
-        setIsEditing(false)
-        setInputValue("");
+        newTache = tache.map((maTache) =>
+          maTache.id === editIndex
+            ? {
+                value: inputValue,
+                timestamp: new Date().toLocaleString(),
+              }
+            : maTache
+        );
+        setIsEditing(false);
       }
+      setInputValue("");
+      setTache(newTache);
     }
   };
 
   const editTask = (Task) => {
     const tacheEdit = tache.find((tacheI) => tacheI.id !== Task);
-    setInputValue(tacheEdit.tache);
-    setIsEditing(true)
+    setInputValue(tacheEdit.value);
+    setIsEditing(true);
+    setEditIndex(tacheEdit.id);
   };
 
   const deleteAll = () => {
@@ -63,7 +65,10 @@ function App() {
   };
 
   return (
-    <div className="App container-fluid" style={{backgroundImage:backgroundColor}}>
+    <div
+      className="App container-fluid"
+      style={{ backgroundImage: backgroundColor }}
+    >
       <div>
         <Header onColorButtonClick={handleColorButtonClick} />
       </div>
@@ -81,6 +86,7 @@ function App() {
       </div>
       <div>
         <MonAffichage
+        iteration={iteration}
           tache={tache}
           handleSubmit={handleSubmit}
           deleteTask={deleteTask}

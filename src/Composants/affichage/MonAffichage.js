@@ -1,32 +1,44 @@
 import React from "react";
 
-const MonAffichage = ({ tache, deleteTask, editTask, isEditing, deleteAll }) => {
+const MonAffichage = ({
+  tache,
+  deleteTask,
+  editTask,
+  isEditing,
+  deleteAll,
+  iteration,
+}) => {
   return (
     <div className="container bg-white">
-      <div className="container mon-affichage mx-auto my-5">
-        <h5>
-          Notes <span>0</span>
-        </h5>
-        <Clear deleteAll={deleteAll}/>
-      </div>
+        <div className=" mon-affichage mx-auto my-5 row">
+          <div className="col-12 col-md-6 d-flex">
+            <h5> Notes </h5>
+            <div className="ms-2 iter text-center text-dark">{iteration}</div>
+          </div>
+          <div className="col-12 col-md-6 text-end">
+            <Clear deleteAll={deleteAll} />
+          </div>
+        </div>
       <hr />
-      <div >
-          <Liste
-            tache={tache}
-            deleteTask={deleteTask}
-            editTask={editTask}
-            isEditing={isEditing}
-            deleteAll={deleteAll}
-          />
+      <div>
+        <Liste
+          tache={tache}
+          deleteTask={deleteTask}
+          editTask={editTask}
+          isEditing={isEditing}
+          deleteAll={deleteAll}
+        />
       </div>
     </div>
   );
 };
 
-const Clear = ({deleteAll}) => {
+const Clear = ({ deleteAll }) => {
   return (
     <div>
-      <button className="btn btn-primary" onClick={deleteAll} >Clear All</button>
+      <button className="btn btn-primary" onClick={deleteAll}>
+        Clear All
+      </button>
     </div>
   );
 };
@@ -49,7 +61,7 @@ const Card = ({ tache, deleteTask, editTask, isEditing }) => {
   return tache.map((myTask) => (
     <div key={myTask.id} className="contenue">
       <div>
-        <h6>{myTask.tache}</h6>
+        <h6>{myTask.value}</h6>
         <p>{myTask.timestamp}</p>
       </div>
       <div>
@@ -63,7 +75,7 @@ const Card = ({ tache, deleteTask, editTask, isEditing }) => {
           tache={tache}
           className="border-btn"
           icon={<i className="fa-solid fa-pen mx-1 "></i>}
-          onClick={() => editTask(myTask) }
+          onClick={() => editTask(myTask)}
         />
       </div>
     </div>
