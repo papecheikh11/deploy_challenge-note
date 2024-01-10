@@ -75,7 +75,7 @@ const Card = ({ tache, deleteTask, editTask, isEditing }) => {
           tache={tache}
           className="border-btn"
           icon={<i className="fa-solid fa-pen mx-1 "></i>}
-          onClick={() => editTask(myTask)}
+          onClick={() => editTask(myTask.id)}
         />
       </div>
     </div>

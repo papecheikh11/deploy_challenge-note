@@ -10,7 +10,7 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("");
-  let iteration = tache.length
+  let iteration = tache.length;
   const handleColorButtonClick = (newColor) => {
     setBackgroundColor(newColor);
   };
@@ -48,19 +48,24 @@ function App() {
     }
   };
 
-  const editTask = (Task) => {
-    const tacheEdit = tache.find((tacheI) => tacheI.id !== Task);
-    setInputValue(tacheEdit.value);
-    setIsEditing(true);
-    setEditIndex(tacheEdit.id);
+  const editTask = (taskId) => {
+    const tacheEdit = tache.find((tacheI) => tacheI.id === taskId);
+    if (tacheEdit) {
+      setInputValue(tacheEdit.value);
+      setIsEditing(true);
+      setEditIndex(tacheEdit.id);
+    } else {
+      console.error("Task not found");
+    }
   };
+  
 
   const deleteAll = () => {
     setTache([]);
   };
 
-  const deleteTask = (Task) => {
-    const newTask = tache.filter((tacheI) => tacheI.id !== Task);
+  const deleteTask = (task) => {
+    const newTask = tache.filter((tacheI) => tacheI.id !== task);
     setTache(newTask);
   };
 
@@ -86,7 +91,7 @@ function App() {
       </div>
       <div>
         <MonAffichage
-        iteration={iteration}
+          iteration={iteration}
           tache={tache}
           handleSubmit={handleSubmit}
           deleteTask={deleteTask}
