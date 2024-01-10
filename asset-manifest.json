@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/deploy_challenge-note/static/css/main.29da0b91.css",
+    "main.js": "/deploy_challenge-note/static/js/main.5c0ecb0c.js",
+    "index.html": "/deploy_challenge-note/index.html",
+    "main.29da0b91.css.map": "/deploy_challenge-note/static/css/main.29da0b91.css.map",
+    "main.5c0ecb0c.js.map": "/deploy_challenge-note/static/js/main.5c0ecb0c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.29da0b91.css",
+    "static/js/main.5c0ecb0c.js"
+  ]
+}
