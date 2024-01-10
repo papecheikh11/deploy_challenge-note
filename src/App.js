@@ -1,15 +1,16 @@
 import "./App.css";
 import { useState } from "react";
+import { useEffect } from "react";
 
 import MonAffichage from "./Composants/affichage/MonAffichage";
 import Header from "./Composants/header/Header";
 import Input from "./Composants/input/Input";
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [tache, setTache] = useState([]);
+  const [tache, setTache] = useState(JSON.parse(localStorage.getItem('tache')) || [])
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState(JSON.parse(localStorage.getItem('backgroundColor')) || "")
   let iteration = tache.length;
   const handleColorButtonClick = (newColor) => {
     setBackgroundColor(newColor);
@@ -68,6 +69,11 @@ function App() {
     const newTask = tache.filter((tacheI) => tacheI.id !== task);
     setTache(newTask);
   };
+
+  useEffect(() => {
+    localStorage.setItem('tache', JSON.stringify(tache))
+    localStorage.setItem('backgroundColor', JSON.stringify(backgroundColor))
+  }, [tache, backgroundColor])
 
   return (
     <div
